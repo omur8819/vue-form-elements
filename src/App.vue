@@ -14,22 +14,22 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="email">Kullanıcı Adı</label>
-                    <input type="text" id="username" class="form-control">
+                    <input type="text" id="username" class="form-control" v-model="userData.username">
                   </div>
                   <div class="form-group">
                     <label for="password">Şifre</label>
-                    <input type="password" id="password" class="form-control">
+                    <input type="password" id="password" class="form-control" v-model.lazy.trim="userData.password">
                   </div>
                   <div class="form-group">
                     <label for="age">Yaş</label>
-                    <input type="number" id="age" class="form-control">
+                    <input type="number" id="age" class="form-control" v-model.number.trim="userData.age">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
                   <label for="message">Açıklama</label><br>
-                  <textarea id="message" rows="3" class="form-control"></textarea>
+                  <textarea id="message" rows="3" class="form-control" v-model="userData.message"></textarea>
                 </div>
               </div>
               <div class="row">
@@ -81,10 +81,10 @@
               <h4>Form Verileri</h4>
             </div>
             <div class="panel-body">
-              <p>Kullanıcı Adı:</p>
-              <p>Şifre:</p>
-              <p>Yaş:</p>
-              <p>Açıklama: </p>
+              <p>Kullanıcı Adı: {{ userData.username }}</p>
+              <p>Şifre:  {{ userData.password }}</p>
+              <p>Yaş: {{ userData.age }}</p>
+              <p style="white-space: pre;">Açıklama: {{ userData.message }} </p>
               <p><strong>İlgi Alanları</strong></p>
               <ul>
                 <li></li>
@@ -101,7 +101,18 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    data(){
+      return{
+        userData: {
+          username: '',
+          password: '',
+          age: 30,
+          message: '',
+        }
+      }
+    }
+  }
 </script>
 
 <style>
